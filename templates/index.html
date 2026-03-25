@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Movie Recommender</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Dynamic Background Elements -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <div class="container">
+
+        <header>
+            <h1 class="gradient-text">MovieX</h1>
+            <p class="subtitle">An advanced AI recommendation engine built on Collaborative Filtering & Temporal
+                Context.</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Search Section -->
+            <section class="search-panel glass-panel">
+                <h2>Find Similar Movies</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for a movie (e.g., Toy Story)..."
+                        autocomplete="off">
+                    <select id="langSelect" class="styled-select" style="flex: 0 0 140px; min-width: 140px;">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="hi">Hindi</option>
+                    </select>
+                    <button id="searchBtn">Get Recommendations</button>
+                </div>
+
+                <!-- Autocomplete Dropdown -->
+                <ul id="searchResults" class="dropdown hidden"></ul>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-container hidden">
+                <div class="results-header">
+                    <h3 id="resultsTitle">Because you watched <span id="sourceMovie" class="highlight"></span>...</h3>
+                </div>
+                <div id="movieGrid" class="movie-grid">
+                    <!-- Cards injected via JS -->
+            </section>
+
+            <!-- Explore Section -->
+            <section class="explore-panel glass-panel">
+                <div class="explore-header">
+                    <h2>Explore by Mood & Era</h2>
+                    <span id="exploreBadge" class="badge hidden"></span>
+                </div>
+                <div class="filter-controls">
+                    <select id="moodSelect" class="styled-select">
+                        <option value="all">Any Mood</option>
+                        <option value="happy">Happy & Fun</option>
+                        <option value="sad">Sad & Reflective</option>
+                        <option value="angry">Angry & Pumped</option>
+                        <option value="relaxed">Relaxed & Chill</option>
+                        <option value="spooky">Spooky & Scary</option>
+                    </select>
+
+                    <select id="eraSelect" class="styled-select">
+                        <option value="all">Any Era</option>
+                        <option value="recent">Recent (2010+)</option>
+                        <option value="modern">Modern (2000s)</option>
+                        <option value="80s90s">80s & 90s</option>
+                        <option value="classics">Classics (Pre-1980)</option>
+                    </select>
+
+                    <button id="exploreBtn">Find Movies</button>
+                </div>
+
+                <div id="exploreGrid" class="movie-grid explore-grid hidden">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
